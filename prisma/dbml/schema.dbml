@@ -1,0 +1,45 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table users {
+  id Int [pk, increment]
+  email String [unique, not null]
+  password String [not null]
+  phone String
+  name String [not null]
+  status Int [not null, default: 1]
+  createAt DateTime [default: `now()`, not null]
+  updateAt DateTime
+  posts posts [not null]
+}
+
+Table posts {
+  id Int [pk, increment]
+  title String [not null]
+  summary String [not null]
+  content String [not null]
+  status Int [not null, default: 1]
+  user users [not null]
+  owner Int [not null]
+  category categories [not null]
+  categoryId Int [not null]
+}
+
+Table categories {
+  id Int [pk, increment]
+  name String [not null]
+  description String [not null]
+  createAt DateTime [default: `now()`, not null]
+  updateAt DateTime
+  posts posts [not null]
+}
+
+Table comments {
+  id Int [pk, increment]
+  message String [not null]
+}
+
+Ref: posts.owner > users.id
+
+Ref: posts.categoryId > categories.id
