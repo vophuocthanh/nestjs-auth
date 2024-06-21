@@ -27,18 +27,18 @@ model User {
 }
 
 model Post {
-  id    Int    @id @default(autoincrement())
-  title String
-  summary String
-  content String
-  status Int    @default(1)
-  user  User   @relation(fields: [owner], references: [id])
-  owner Int
-  category Category @relation(fields: [categoryId], references: [id])
+  id         Int      @id @default(autoincrement())
+  title      String
+  summary    String
+  content    String   
+  status     Int      @default(1)
+  owner      User     @relation(fields: [ownerId], references: [id])
+  ownerId    Int
+  category   Category @relation(fields: [categoryId], references: [id])
   categoryId Int
+
   @@map("posts")
 }
-
 model Category {
   id    Int    @id @default(autoincrement())
   name  String
