@@ -20,8 +20,8 @@ Table posts {
   summary String [not null]
   content String [not null]
   status Int [not null, default: 1]
-  user users [not null]
-  owner Int [not null]
+  owner users [not null]
+  ownerId Int [not null]
   category categories [not null]
   categoryId Int [not null]
 }
@@ -40,6 +40,6 @@ Table comments {
   message String [not null]
 }
 
-Ref: posts.owner > users.id
+Ref: posts.ownerId > users.id
 
 Ref: posts.categoryId > categories.id

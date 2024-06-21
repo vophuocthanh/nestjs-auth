@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, PrismaService, JwtService], // những thằng dùng trong controller và servie thfi phải import hết vafo model. VD: PrismaService, JwtService
+  providers: [AuthService, PrismaService, JwtService], // những thằng dùng trong  servie thfi phải import hết vafo model. VD: PrismaService, JwtService
+  // Những thằng được khơri tạo bằng phương thức contructor trong service thì phải import ơ providers trong model
 })
 export class AuthModule {}
